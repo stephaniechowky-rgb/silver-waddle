@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sudoku Studio</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="play-area" aria-label="Sudoku game">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Logic board</p>
+            <h1>Sudoku Studio</h1>
+          </div>
+          <div class="stats" aria-label="Game stats">
+            <div>
+              <span>Time</span>
+              <strong id="timer">00:00</strong>
+            </div>
+            <div>
+              <span>Mistakes</span>
+              <strong><span id="mistakes">0</span>/3</strong>
+            </div>
+          </div>
+        </header>
+
+        <div class="board-shell">
+          <div class="board-art" aria-hidden="true">
+            <svg viewBox="0 0 180 180" role="img">
+              <defs>
+                <pattern id="mini-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                  <path d="M20 0v60M40 0v60M0 20h60M0 40h60" />
+                  <path class="heavy" d="M0 0h60v60H0z" />
+                </pattern>
+              </defs>
+              <rect width="180" height="180" fill="url(#mini-grid)" />
+              <circle cx="34" cy="35" r="12" />
+              <circle cx="144" cy="145" r="12" />
+              <path d="M132 38h24M144 26v24M24 132h24M36 120v24" />
+            </svg>
+          </div>
+          <div id="message" class="message" role="status" aria-live="polite">Pick a square to begin.</div>
+          <div id="board" class="board" aria-label="Sudoku board"></div>
+        </div>
+      </section>
+
+      <aside class="controls" aria-label="Sudoku controls">
+        <div class="panel">
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+            <option value="expert">Expert</option>
+          </select>
+        </div>
+
+        <div class="number-pad" aria-label="Number pad">
+          <button type="button" data-number="1">1</button>
+          <button type="button" data-number="2">2</button>
+          <button type="button" data-number="3">3</button>
+          <button type="button" data-number="4">4</button>
+          <button type="button" data-number="5">5</button>
+          <button type="button" data-number="6">6</button>
+          <button type="button" data-number="7">7</button>
+          <button type="button" data-number="8">8</button>
+          <button type="button" data-number="9">9</button>
+        </div>
+
+        <div class="tools">
+          <button type="button" id="notes" aria-pressed="false" title="Notes mode">
+            <span aria-hidden="true">N</span>
+            Notes
+          </button>
+          <button type="button" id="erase" title="Erase selected square">
+            <span aria-hidden="true">⌫</span>
+            Erase
+          </button>
+          <button type="button" id="hint" title="Fill one correct square">
+            <span aria-hidden="true">?</span>
+            Hint
+          </button>
+          <button type="button" id="check" title="Check the board">
+            <span aria-hidden="true">✓</span>
+            Check
+          </button>
+        </div>
+
+        <button type="button" id="new-game" class="primary">New game</button>
+      </aside>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
